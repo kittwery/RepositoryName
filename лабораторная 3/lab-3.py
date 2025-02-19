@@ -27,6 +27,9 @@ class PaperBook(Book):
     def __str__(self):
         return f"Книга {self.name}. Автор {self.author}. Страниц: {self.pages}"
 
+    def __repr__(self):
+        return f"{self.__class__.__name__}(name={self.name!r}, author={self.author!r}, pages={self.pages!r})"
+
     @property
     def pages(self):
         return self._pages
@@ -46,7 +49,10 @@ class AudioBook(Book):
         self.duration = duration
 
     def __str__(self):
-        return f"Книга {self.name}. Автор {self.author}. Длительность: {self.duration}"
+        return f"Книга {self.name}. Автор {self.author}. Длительность: {self.duration} часов"
+
+    def __repr__(self):
+        return f"{self.__class__.__name__}(name={self.name!r}, author={self.author!r}, duration={self.duration!r})"
 
     @property
     def duration(self):
@@ -75,12 +81,3 @@ try:
 except (ValueError, TypeError, AttributeError) as e:
     print(f"Error: {e}")
 
-
-class AudioBook:
-    def __init__(self, name: str, author: str, duration: float):
-        self.name = name
-        self.author = author
-        self.duration = duration
-
-    def __str__(self):
-        return f"Книга {self.name}. Автор {self.author}"
